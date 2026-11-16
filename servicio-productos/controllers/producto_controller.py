@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from models.producto import Producto
-from schemas.producto import ProductoResponse
+from schemas.producto import Producto as ProductoCreate
 
 def obtener_producto(db: Session):
-    return db.query(Producto).all
+    return db.query(Producto).all()
 def obtener_producto_id(db: Session, codigo: int):
     return db.query(Producto).filter(Producto.codigo == codigo).first()
 
@@ -20,7 +20,7 @@ def crear_producto(db: Session, producto: ProductoCreate):
 
     return nuevo_producto
 
-def actualizar_producto(db: Session, codigo: int):
+def actualizar_producto(db: Session, codigo: int, datos: ProductoCreate):
     producto = obtener_producto_id(db, codigo)
     if not producto:
         return None
