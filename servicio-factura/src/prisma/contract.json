@@ -29,6 +29,13 @@
                   "kind": "scalar"
                 }
               },
+              "descuento": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/double@1",
+                  "kind": "scalar"
+                }
+              },
               "detalles_factura": {
                 "many": {
                   "elementNullable": false
@@ -52,21 +59,21 @@
               "iva": {
                 "nullable": false,
                 "type": {
-                  "codecId": "mongo/decimal128@1",
+                  "codecId": "mongo/double@1",
                   "kind": "scalar"
                 }
               },
               "total": {
                 "nullable": false,
                 "type": {
-                  "codecId": "mongo/decimal128@1",
+                  "codecId": "mongo/double@1",
                   "kind": "scalar"
                 }
               },
               "total_a_pagar": {
                 "nullable": false,
                 "type": {
-                  "codecId": "mongo/decimal128@1",
+                  "codecId": "mongo/double@1",
                   "kind": "scalar"
                 }
               }
@@ -80,6 +87,9 @@
                 },
                 "codigo": {
                   "field": "codigo"
+                },
+                "descuento": {
+                  "field": "descuento"
                 },
                 "detalles_factura": {
                   "field": "detalles_factura"
@@ -137,6 +147,9 @@
                     "codigo": {
                       "bsonType": "string"
                     },
+                    "descuento": {
+                      "bsonType": "double"
+                    },
                     "detalles_factura": {
                       "bsonType": "array",
                       "items": {
@@ -144,9 +157,6 @@
                         "bsonType": "object",
                         "properties": {
                           "cantidad": {
-                            "bsonType": "int"
-                          },
-                          "cod_factura": {
                             "bsonType": "int"
                           },
                           "cod_producto": {
@@ -161,7 +171,6 @@
                         },
                         "required": [
                           "cantidad",
-                          "cod_factura",
                           "cod_producto",
                           "codigo",
                           "subtotal"
@@ -172,19 +181,20 @@
                       "bsonType": "date"
                     },
                     "iva": {
-                      "bsonType": "decimal"
+                      "bsonType": "double"
                     },
                     "total": {
-                      "bsonType": "decimal"
+                      "bsonType": "double"
                     },
                     "total_a_pagar": {
-                      "bsonType": "decimal"
+                      "bsonType": "double"
                     }
                   },
                   "required": [
                     "_id",
                     "cod_cliente",
                     "codigo",
+                    "descuento",
                     "detalles_factura",
                     "fecha",
                     "iva",
@@ -202,13 +212,6 @@
             "DetalleFactura": {
               "fields": {
                 "cantidad": {
-                  "nullable": false,
-                  "type": {
-                    "codecId": "mongo/int32@1",
-                    "kind": "scalar"
-                  }
-                },
-                "cod_factura": {
                   "nullable": false,
                   "type": {
                     "codecId": "mongo/int32@1",
@@ -244,7 +247,7 @@
         "kind": "mongo-database"
       }
     },
-    "storageHash": "d3aa3106f4ac19f2662e9a1dbfe29a900b89ecdb541c745e7c0e6bbd96172241"
+    "storageHash": "feac374015c3291132446b7071ecadeb0da1985255bbd42646d27f5f826685cc"
   },
   "capabilities": {},
   "extensions": {},
