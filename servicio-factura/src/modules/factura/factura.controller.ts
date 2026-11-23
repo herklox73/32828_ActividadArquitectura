@@ -3,7 +3,7 @@ import { FacturaService } from './factura.service.js';
 import type { Factura } from '../../models/factura.model.js';
 import type { DetalleFactura } from '../../models/detalle-factura.model.js';
 
-@Controller('factura')
+@Controller('facturas')
 export class FacturaController {
   constructor(private readonly facturaService: FacturaService) {}
 
